@@ -98,19 +98,19 @@ def evaluate_mrz():
     total_computation_walltime = sum([wt for fn, mrz, wt in results])
     total_walltime = time.time() - tic
     log.info("Completed")
-    print("Walltime:          %0.2fs" % total_walltime)
-    print("Compute walltime:  %0.2fs" % total_computation_walltime)
-    print("Processed files:   %d" % num_files)
-    print("Perfect parses:    %d" % num_perfect)
-    print("Invalid parses:    %d" % num_invalid)
-    print("Improved parses:   %d" % len(filter(lambda x: x == '>', score_changes)))
-    print("Worsened parses:   %d" % len(filter(lambda x: x == '<', score_changes)))
-    print("Total score:       %d" % total_score)
-    print("Mean score:        %0.2f" % (float(total_score)/num_files))
-    print("Mean compute time: %0.2fs" % (total_computation_walltime/num_files))
+    print(("Walltime:          %0.2fs" % total_walltime))
+    print(("Compute walltime:  %0.2fs" % total_computation_walltime))
+    print(("Processed files:   %d" % num_files))
+    print(("Perfect parses:    %d" % num_perfect))
+    print(("Invalid parses:    %d" % num_invalid))
+    print(("Improved parses:   %d" % len([x for x in score_changes if x == '>'])))
+    print(("Worsened parses:   %d" % len([x for x in score_changes if x == '<'])))
+    print(("Total score:       %d" % total_score))
+    print(("Mean score:        %0.2f" % (float(total_score)/num_files)))
+    print(("Mean compute time: %0.2fs" % (total_computation_walltime/num_files)))
     print("Methods used:")
     for stat in method_stats.most_common():
-        print("  %s: %d" % stat)
+        print(("  %s: %d" % stat))
 
 def mrz():
     """
@@ -134,6 +134,6 @@ def mrz():
 
     if not args.json:
         for k in d:
-            print("%s\t%s" % (k, str(d[k])))
+            print(("%s\t%s" % (k, str(d[k]))))
     else:
-        print(json.dumps(d, indent=2))
+        print((json.dumps(d, indent=2)))
