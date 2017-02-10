@@ -51,3 +51,4 @@ setup(name='PassportEye',
                               'mrz=passporteye.mrz.scripts:mrz']
       }
 )
+    
